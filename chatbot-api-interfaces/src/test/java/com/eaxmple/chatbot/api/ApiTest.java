@@ -1,9 +1,5 @@
 package com.eaxmple.chatbot.api;
 
-/*
-单元测试
- */
-
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -17,7 +13,9 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-
+/*
+单元测试
+ */
 public class ApiTest {
     @Test
     public void query_unanswered_questions() throws IOException {
