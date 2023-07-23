@@ -82,7 +82,7 @@ public class ApiTest {
         HttpPost post = new HttpPost("https://api.openai.com/v1/chat/completions");
 //        HttpPost post = new HttpPost("https://api.openai.com/v1/completions");
         post.addHeader("Content-Type", "application/json");
-        post.addHeader("Authorization","Bearer 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");
+        post.addHeader("Authorization","Bearer sk-dfgsfdipxrue3aa10GYqgbIT3BlbkFJ6zdElTgFX2SOX5nyrjCG");
 
         String paramJson = "{\n" +
                 "     \"model\": \"gpt-3.5-turbo\",\n" +
