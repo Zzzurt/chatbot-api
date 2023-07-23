@@ -1,5 +1,6 @@
 package com.eaxmple.chatbot.api;
 
+import com.eaxmple.chatbot.api.domain.ai.service.OpenAi;
 import com.eaxmple.chatbot.api.domain.zsxq.IZsxqApi;
 import com.eaxmple.chatbot.api.domain.zsxq.model.aggregates.UnAnsweredQuestionsAggregates;
 import com.alibaba.fastjson.JSON;
@@ -14,6 +15,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -30,6 +34,9 @@ public class SpringBootRunTest {
     @Resource
     private IZsxqApi zsxqApi;
 
+    @Resource
+    private OpenAi openAi;
+
     @Test
     public void test_zsxqApi() throws IOException{
         UnAnsweredQuestionsAggregates unAnsweredQuestionsAggregates = zsxqApi.queryUnAnsweredQuestionsTopicId(groupId, cookie);
@@ -44,5 +51,11 @@ public class SpringBootRunTest {
             // 回答问题
             zsxqApi.answer(groupId, cookie, topicId, text, false);
         }
+    }
+
+    @Test
+    public void test_openAi() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IOException {
+        String response = openAi.doChatGPT("写一个java冒泡排序");
+        logger.info("测试结果：{}", JSON.toJSONString(response));
     }
 }
