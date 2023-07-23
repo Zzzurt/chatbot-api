@@ -11,6 +11,7 @@ import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.util.EntityUtils;
@@ -31,13 +32,13 @@ public class OpenAi implements IOpenAI {
     private String openAiKey;
 
     @Override
-    public String doChatGPT(String question) throws IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
-        //        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        CloseableHttpClient httpClient = HttpClients.custom()
-                .setProxy(new HttpHost("127.0.0.1", 10809)) // 设置代理
-                .setSSLContext(new SSLContextBuilder().loadTrustMaterial(null, (certificate, authType) -> true).build()) // 禁用SSL证书验证
-                .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE) // 禁用主机名验证
-                .build();
+    public String doChatGPT(String question) throws IOException {
+                CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+//        CloseableHttpClient httpClient = HttpClients.custom()
+//                .setProxy(new HttpHost("127.0.0.1", 10809)) // 设置代理
+//                .setSSLContext(new SSLContextBuilder().loadTrustMaterial(null, (certificate, authType) -> true).build()) // 禁用SSL证书验证
+//                .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE) // 禁用主机名验证
+//                .build();
         HttpPost post = new HttpPost("https://api.openai.com/v1/chat/completions");
 //        HttpPost post = new HttpPost("https://api.openai.com/v1/completions");
         post.addHeader("Content-Type", "application/json");

@@ -1,5 +1,6 @@
 package com.eaxmple.chatbot.api;
 
+import com.eaxmple.chatbot.api.domain.ai.IOpenAI;
 import com.eaxmple.chatbot.api.domain.ai.service.OpenAi;
 import com.eaxmple.chatbot.api.domain.zsxq.IZsxqApi;
 import com.eaxmple.chatbot.api.domain.zsxq.model.aggregates.UnAnsweredQuestionsAggregates;
@@ -35,7 +36,7 @@ public class SpringBootRunTest {
     private IZsxqApi zsxqApi;
 
     @Resource
-    private OpenAi openAi;
+    private IOpenAI openAi;
 
     @Test
     public void test_zsxqApi() throws IOException{
@@ -54,7 +55,7 @@ public class SpringBootRunTest {
     }
 
     @Test
-    public void test_openAi() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException, IOException {
+    public void test_openAi() throws IOException {
         String response = openAi.doChatGPT("写一个java冒泡排序");
         logger.info("测试结果：{}", JSON.toJSONString(response));
     }

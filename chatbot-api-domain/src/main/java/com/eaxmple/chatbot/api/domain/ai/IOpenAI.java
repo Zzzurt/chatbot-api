@@ -6,5 +6,5 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 
 public interface IOpenAI {
-    String doChatGPT(String question) throws IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException;
+    String doChatGPT(String question) throws IOException;
 }

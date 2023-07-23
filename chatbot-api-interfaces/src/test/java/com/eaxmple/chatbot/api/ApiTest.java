@@ -70,18 +70,19 @@ public class ApiTest {
     }
 
     @Test
-    public void test_chatGPT() throws IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+    public void test_chatGPT() throws IOException {
 
-//        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        CloseableHttpClient httpClient = HttpClients.custom()
-                .setProxy(new HttpHost("127.0.0.1", 10809)) // 设置代理
-                .setSSLContext(new SSLContextBuilder().loadTrustMaterial(null, (certificate, authType) -> true).build()) // 禁用SSL证书验证
-                .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE) // 禁用主机名验证
-                .build();
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+//        CloseableHttpClient httpClient = HttpClients.custom()
+//                .setProxy(new HttpHost("127.0.0.1", 10809)) // 设置代理
+//                .setSSLContext(new SSLContextBuilder().loadTrustMaterial(null, (certificate, authType) -> true).build()) // 禁用SSL证书验证
+//                .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE) // 禁用主机名验证
+//                .build();
+
         HttpPost post = new HttpPost("https://api.openai.com/v1/chat/completions");
 //        HttpPost post = new HttpPost("https://api.openai.com/v1/completions");
         post.addHeader("Content-Type", "application/json");
-        post.addHeader("Authorization","Bearer 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");
+        post.addHeader("Authorization","Bearer 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");
 
         String paramJson = "{\n" +
                 "     \"model\": \"gpt-3.5-turbo\",\n" +
