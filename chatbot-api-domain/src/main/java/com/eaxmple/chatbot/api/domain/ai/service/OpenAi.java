@@ -35,7 +35,7 @@ public class OpenAi implements IOpenAI {
     public String doChatGPT(String question) throws IOException {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 // 创建一个使用代理的 HttpClient 对象
-//        HttpHost proxy = new HttpHost("39.175.1.186", 8310, "http");
+//        HttpHost proxy = new HttpHost("127.0.0.1", 20012, "http");
 //        CloseableHttpClient httpClient = HttpClients.custom()
 //                .setProxy(proxy)
 //                .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
