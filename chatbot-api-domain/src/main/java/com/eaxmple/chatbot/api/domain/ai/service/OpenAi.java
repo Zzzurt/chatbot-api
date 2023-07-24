@@ -33,11 +33,12 @@ public class OpenAi implements IOpenAI {
 
     @Override
     public String doChatGPT(String question) throws IOException {
-                CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+// 创建一个使用代理的 HttpClient 对象
+//        HttpHost proxy = new HttpHost("39.175.1.186", 8310, "http");
 //        CloseableHttpClient httpClient = HttpClients.custom()
-//                .setProxy(new HttpHost("127.0.0.1", 10809)) // 设置代理
-//                .setSSLContext(new SSLContextBuilder().loadTrustMaterial(null, (certificate, authType) -> true).build()) // 禁用SSL证书验证
-//                .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE) // 禁用主机名验证
+//                .setProxy(proxy)
+//                .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
 //                .build();
         HttpPost post = new HttpPost("https://api.openai.com/v1/chat/completions");
 //        HttpPost post = new HttpPost("https://api.openai.com/v1/completions");
